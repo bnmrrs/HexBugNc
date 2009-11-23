@@ -24,10 +24,21 @@
 
 */
 
-int forwardPin = 10; // Forward switch
-int reversePin = 11; // Reverse switch
-int rightPin = 12; // Right switch
-int leftPin = 13; // Left switch
+
+// Define the avaliable serial commands
+#define MOVE_FORWARD 'f'
+#define MOVE_REVERSE 'r'
+#define SPIN_RIGHT 'R'
+#define SPIN_LEFT 'l'
+#define STOP_MOVEMENT 's'
+#define STOP_SPIN 'S'
+#define STOP_ALL 'k'
+
+// Set up the pins we'll use
+int forwardPin = 10;
+int reversePin = 11;
+int rightPin = 12;
+int leftPin = 13;
 
 /*
   Environment initialization
@@ -56,7 +67,7 @@ void setup()
 */
 void loop()
 {
-  // Make sure we actually have a serial connection avaliable to us
+  // Make sure we actually have a serial connection avaliable
   if (Serial.available() > 0) {
 
     // Read input from the USB serial connection
@@ -64,40 +75,33 @@ void loop()
 
     switch (inByte) {
 
-      // Move forward
-      case 'f':
+      case MOVE_FORWARD:
         move(forwardPin, reversePin);
         break;
 
-      // Move in reverse
-      case 'r':
+      case MOVE_REVERSE:
         move(reversePin, forwardPin);
         break;
 
-      // Spin right
-      case 'R':
+      case SPIN_RIGHT:
         move(rightPin, leftPin);
         break;
 
-      // Spin left
-      case 'l':
+      case SPIN_LEFT:
         move(leftPin, rightPin);
         break;
 
-      // Stop forward/reverse movement
-      case 's':
+      case STOP_MOVEMENT:
         stop(forwardPin);
         stop(reversePin);
         break;
 
-      // Stop spin
-      case 'S':
+      case STOP_SPIN:
         stop(leftPin);
         stop(rightPin);
         break;
 
-      // All stop
-      case 'k':
+      case ALL_STOP:
       default:
         stop(forwardPin);
         stop(reversePin);
