@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Network Controlled HexBug</title>
+
+  <script src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+   google.load('jquery', '1.3.1');
+  </script>
+
+  <script src="/js/jquery.hotkeys.min.js"></script>
+
+  {% if hexbug_avaliable %}
+  <script type="text/javascript">
+   var send_cmd = function(cmd) {
+    var cmd = { 'command': cmd };
+
+    return function() {
+     var url = '/send_command';
+     $.post(url, cmd);
+    }
+   }
+
+   // Forward
+   $(document).bind('keydown', 'up', send_cmd('forward'));
+   $(document).bind('keyup', 'up', send_cmd('stop_walk'));
+
+   // Reverse
+   $(document).bind('keydown', 'down', send_cmd('reverse'));
+   $(document).bind('keyup', 'down', send_cmd('stop_walk'));
+
+   // Right
+   $(document).bind('keydown', 'right', send_cmd('right'));
+   $(document).bind('keyup', 'right', send_cmd('stop_spin'));
+
+   // Left
+   $(document).bind('keydown', 'left', send_cmd('left'));
+   $(document).bind('keyup', 'left', send_cmd('stop_spin'));
+  </script>
+  {% endif %}
+
+</head>
+<body>
+  <h1>Network Controlled Hex Bug</h1>
+  {% if hexbug_avaliable %}
+  <h2>The HexBug is Online!</h2>
+  {% else %}
+  <h2>The HexBug is Not Online</h2>
+  {% endif %}
+
+  <h2>Instructions:</h2>
+  <p>Use the arrow keys to control the HexBug</p>
+ </body>
+</html>
