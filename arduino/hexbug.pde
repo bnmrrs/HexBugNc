@@ -32,13 +32,13 @@
 #define SPIN_LEFT 'l'
 #define STOP_MOVEMENT 's'
 #define STOP_SPIN 'S'
-#define STOP_ALL 'k'
+#define ALL_STOP 'k'
 
 // Set up the pins we'll use
-int forwardPin = 10;
-int reversePin = 11;
-int rightPin = 12;
-int leftPin = 13;
+int forwardPin = 8;
+int reversePin = 9;
+int rightPin = 11;
+int leftPin = 12;
 
 /*
   Environment initialization
