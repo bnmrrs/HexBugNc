@@ -5,7 +5,7 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 
-HEXBUG_XMPP_ADDR = 'hexbug.client@gmail.com'
+HEXBUG_XMPP_ADDR = ''
 
 class MainPage(webapp.RequestHandler):
   def get(self):
