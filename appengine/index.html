@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Network Controlled HexBug</title>
+
+  <script src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+   google.load('jquery', '1.3.1');
+  </script>
+
+  <script src="/js/jquery.hotkeys.min.js"></script>
+
+  {% if hexbug_avaliable %}
+  <script src="/js/hexbug.js"></script>
+
+  <script type="text/javascript">
+    // Forward
+    $(document).bind('keydown', 'up', hexbug.forward);
+
+    // Reverse
+    $(document).bind('keydown', 'down', hexbug.reverse);
+
+    // Right
+    $(document).bind('keydown', 'right', hexbug.right);
+
+    // Left
+    $(document).bind('keydown', 'left', hexbug.left);
+  </script>
+  {% endif %}
+
+</head>
+<body>
+  <h1>Network Controlled Hex Bug</h1>
+  {% if hexbug_avaliable %}
+  <h2>The HexBug is Online!</h2>
+  {% else %}
+  <h2>The HexBug is Not Online</h2>
+  {% endif %}
+
+  <h2>Instructions:</h2>
+  <p>Use the arrow keys to control the HexBug</p>
+ </body>
+</html>
